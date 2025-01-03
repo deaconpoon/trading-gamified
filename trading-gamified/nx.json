@@ -1,0 +1,124 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "dev:spotlight": {
+      "cache": true
+    },
+    "dev:next": {
+      "cache": true
+    },
+    "dev": {
+      "cache": true
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
+    "start": {
+      "cache": true
+    },
+    "build-stats": {
+      "cache": true
+    },
+    "clean": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "lint:fix": {
+      "cache": true
+    },
+    "check-types": {
+      "cache": true
+    },
+    "test": {
+      "cache": true,
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
+    },
+    "test:e2e": {
+      "cache": true
+    },
+    "db:generate": {
+      "cache": true
+    },
+    "db:migrate": {
+      "cache": true
+    },
+    "db:studio": {
+      "cache": true
+    },
+    "storybook": {
+      "cache": true
+    },
+    "storybook:build": {
+      "cache": true
+    },
+    "storybook:serve": {
+      "cache": true
+    },
+    "serve-storybook": {
+      "cache": true
+    },
+    "test-storybook:ci": {
+      "cache": true
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "build-stats",
+          "storybook:build",
+          "db:generate",
+          "db:migrate"
+        ]
+      }
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "production": [
+      "default",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/test-setup.[jt]s"
+    ],
+    "sharedGlobals": []
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "plugin": "@nx/storybook/plugin",
+      "options": {
+        "serveStorybookTargetName": "serve:storybook",
+        "buildStorybookTargetName": "build-storybook",
+        "testStorybookTargetName": "test-storybook",
+        "staticStorybookTargetName": "static-storybook"
+      }
+    },
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e"
+      }
+    }
+  ],
+  "nxCloudAccessToken": "YOUR_NX_CLOUD_ACCESS_TOKEN"
+}
