@@ -12,7 +12,9 @@
     },
     "build": {
       "cache": true,
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "start": {
       "cache": true
@@ -34,7 +36,11 @@
     },
     "test": {
       "cache": true,
-      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/jest.preset.js"
+      ]
     },
     "test:e2e": {
       "cache": true
@@ -85,7 +91,10 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -120,5 +129,6 @@
       }
     }
   ],
-  "nxCloudAccessToken": "YOUR_NX_CLOUD_ACCESS_TOKEN"
+  "nxCloudAccessToken": "YOUR_NX_CLOUD_ACCESS_TOKEN",
+  "nxCloudId": "677787dede2bf5298dce32e1"
 }
